@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+$rootDir = dirname(__FILE__);
+$autoloader = $rootDir . "/vendor/autoload.php";
+
+if (!file_exists($autoloader)) {
+    throw new Exception('You need to run composer to create the autoloader.');
+}
+
+require_once($autoloader);
+
+$app = new ChrisHalbert\PhpBCC\Console\Application();
+
+$app->run();
