@@ -8,6 +8,8 @@ abstract class AbstractVCS implements VCSInterface
 {
     private $entries;
 
+    abstract function getAuthorAndDate($file, $line);
+
     final public function __construct(array $entries = [])
     {
         $this->setEntries($entries);
