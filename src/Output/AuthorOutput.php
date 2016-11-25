@@ -2,20 +2,53 @@
 
 namespace ChrisHalbert\PhpBCC\Output;
 
+/**
+ * Class AuthorOutput
+ * @package ChrisHalbert\PhpBCC\Output
+ */
 class AuthorOutput implements OutputInterface
 {
+    /**
+     * Number of characters per line.
+     * @const integer
+     */
     const CHARS_PER_LINE = 100;
 
+    /**
+     * Right padding spaces.
+     * @const integer
+     */
     const RIGHT_PADDING = 14;
 
+    /**
+     * The entries.
+     * @var array
+     */
     private $entries;
 
+    /**
+     * Total lines of uncovered code.
+     * @var integer
+     */
     private $totalLines = 0;
 
+    /**
+     * Associative array of $author => $lines.
+     * @var array
+     */
     private $linesByAuthor = [];
 
+    /**
+     * The output for the author.
+     * @var array
+     */
     protected $authorOutput = [];
 
+    /**
+     * Outputs information based on the entries.
+     * @param array $entries The uncovered code entries.
+     * @return void
+     */
     public function output(array $entries)
     {
         $this->entries = $entries;
@@ -23,6 +56,10 @@ class AuthorOutput implements OutputInterface
         $this->outputResults();
     }
 
+    /**
+     * Prepares the breakdown of data.
+     * @return void
+     */
     protected function prepareBreakdown()
     {
         foreach ($this->entries as $entry) {
@@ -51,12 +88,21 @@ class AuthorOutput implements OutputInterface
         }
     }
 
+    /**
+     * Adds an entry for an author and to the total lines.
+     * @param string $author The author.
+     * @return void
+     */
     protected function addAuthorEntry($author)
     {
         $this->linesByAuthor[$author]++;
         $this->totalLines++;
     }
 
+    /**
+     * Outputs the results formatting for a terminal screen of 100.
+     * @return void
+     */
     protected function outputResults()
     {
         echo $this->rightAlign('PHP BLAME CODE COVERAGE', 'UNCOVERED OBJECTS (#/total) %') . PHP_EOL . PHP_EOL;
@@ -72,12 +118,23 @@ class AuthorOutput implements OutputInterface
         }
     }
 
+    /**
+     * Gets the header for the author section.
+     * @param string $author The author.
+     * @return string
+     */
     protected function getAuthorHeader($author)
     {
         $stats = $this->getStats($this->linesByAuthor[$author], $this->totalLines);
         return $this->rightAlign($author, $stats) . PHP_EOL;
     }
 
+    /**
+     * Gets stats in a readable format based on the count and total
+     * @param integer $count The count.
+     * @param integer $total The total.
+     * @return string
+     */
     protected function getStats($count, $total)
     {
         $percent = strval(round($count / $total * 100, 1)) . '%';
@@ -85,6 +142,12 @@ class AuthorOutput implements OutputInterface
         return $ration . ' ' . $percent;
     }
 
+    /**
+     * Wraps line and right aligns the word for the first line.
+     * @param string $subject The main string.
+     * @param string $word    The word to append.
+     * @return string
+     */
     protected function wrapLineWithRightAlign($subject, $word)
     {
         $len = strlen($word);
@@ -97,11 +160,22 @@ class AuthorOutput implements OutputInterface
         return $this->wrapLine($newSubject);
     }
 
+    /**
+     * Wraps lines based on the specified characters and padding.
+     * @param string $line A string.
+     * @return string
+     */
     protected function wrapLine($line)
     {
         return wordwrap($line, self::CHARS_PER_LINE - self::RIGHT_PADDING, "\n    ");
     }
 
+    /**
+     * Right aligns a word into a given string.
+     * @param string $line The line to add to.
+     * @param string $word The word to be added.
+     * @return string
+     */
     protected function rightAlign($line, $word)
     {
         $len = strlen($word);

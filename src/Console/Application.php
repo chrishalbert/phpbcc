@@ -6,6 +6,10 @@ use Symfony\Component\Console\Application as ConsoleApplication;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class Application
+ * @package ChrisHalbert\PhpBCC\Console
+ */
 class Application extends ConsoleApplication
 {
     /**
@@ -30,6 +34,9 @@ class Application extends ConsoleApplication
         return Application::NAME;
     }
 
+    /**
+     * Application constructor.
+     */
     public function __construct()
     {
         parent::__construct(Application::NAME, Application::VERSION);
@@ -57,6 +64,12 @@ class Application extends ConsoleApplication
         return $inputDefinition;
     }
 
+    /**
+     * Runs the application.
+     * @param InputInterface  $input  The input to the command.
+     * @param OutputInterface $output The output to the command.
+     * @return void
+     */
     public function doRun(InputInterface $input, OutputInterface $output)
     {
         $output->write(
