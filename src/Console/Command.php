@@ -6,8 +6,11 @@ use ChrisHalbert\PhpBCC\Exceptions\InvalidArgument;
 use ChrisHalbert\PhpBCC\Exceptions\InvalidArgumentException;
 use ChrisHalbert\PhpBCC\Input\CloverInput;
 use ChrisHalbert\PhpBCC\Input\DefaultInput;
+use ChrisHalbert\PhpBCC\Output\AuthorOutput;
+use ChrisHalbert\PhpBCC\Output\TextOutput;
 use ChrisHalbert\PhpBCC\VCS\GitVCS;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
+use Symfony\Component\Console\Formatter\OutputFormatter;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -46,14 +49,20 @@ class Command extends SymfonyCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        // Load the different types.
         $inputFormat = $this->loadInputFormat($input);
         $vcsType = $this->loadVCSType($input);
+        $outputFormatter = $this->loadOutputFormat($input);
 
+        // Get the code coverage violation entries from the input type
         $exposedObjects = $inputFormat->getEntries();
+
+        // Set the VCS with the entries and get an array with historical data
         $vcsType->setEntries($exposedObjects);
         $historicalEntries = $vcsType->getEntries();
 
-        var_dump($historicalEntries);
+        // Output the results
+        $outputFormatter->output($historicalEntries);
     }
 
     /**
@@ -82,5 +91,17 @@ class Command extends SymfonyCommand
                 break;
         }
         throw new InvalidArgumentException('A valid `vcs` argument was not passed.');
+    }
+
+    protected function loadOutputFormat(InputInterface $input)
+    {
+        switch ($input->getOption('output-format')) {
+            case 'text':
+                return new TextOutput();
+            case 'author':
+                return new AuthorOutput()   ;
+            default:
+                break;
+        }
     }
 }
