@@ -20,9 +20,7 @@ class CloverInput extends AbstractInput
 
     private function seekLineStats($file)
     {
-        $lines = $file->xpath("//line");
-
-        foreach ($lines as $line) {
+        foreach ($file->children()->line as $line) {
             $lineNumber = (int) $line['num']->__toString();
             $this->addEntry($file['name']->__toString(), $lineNumber);
         }
