@@ -30,6 +30,7 @@
         <!-- Run phpunit saving data -->
         <phpunit printsummary="true" codecoverage="true" errorproperty="phpuniterror" failureproperty="phpunitfailure">
             <formatter type="xml" todir="${reports.dir}" outfile="phpunit.log"/>
+            <formatter type="clover" todir="${reports.dir}"/>
             <batchtest>
                 <fileset dir="${project.basedir}/tests">
                     <include name="**/*Test.php"/>
