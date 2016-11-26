@@ -4,11 +4,30 @@ namespace ChrisHalbert\PhpBCC\VCS;
 
 use ChrisHalbert\Git\Git;
 
+/**
+ * Class GitVCS
+ * @package ChrisHalbert\PhpBCC\VCS
+ */
 class GitVCS extends AbstractVCS
 {
+    /**
+     * The Git author slug.
+     * @const string
+     */
     const AUTHOR = "author ";
+
+    /**
+     * The Git author time slug.
+     * @const string
+     */
     const DATE = "author-time ";
 
+    /**
+     * Get the author and edit date.
+     * @param string  $file The file name.
+     * @param integer $line The line number in the file.
+     * @return array ['author', 'date']
+     */
     public function getAuthorAndDate($file, $line)
     {
         $git = new Git();
@@ -28,6 +47,12 @@ class GitVCS extends AbstractVCS
         return [$author, $date];
     }
 
+    /**
+     * Strips out the key and trims the remaining string.
+     * @param string $key    Key should be removed.
+     * @param string $string The string is what the key is removed from.
+     * @return string
+     */
     private function stripEntity($key, $string)
     {
         return trim(str_replace($key, '', $string));

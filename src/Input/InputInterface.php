@@ -2,7 +2,15 @@
 
 namespace ChrisHalbert\PhpBCC\Input;
 
+/**
+ * Interface InputInterface
+ * @package ChrisHalbert\PhpBCC\Input
+ */
 interface InputInterface
 {
-    public function __construct($file);
+    /**
+     * InputInterface constructor.
+     * @param string $path The path to the input file.
+     */
+    public function __construct($path);
 }
