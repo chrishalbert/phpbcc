@@ -150,14 +150,23 @@ class AuthorOutput implements OutputInterface
      */
     protected function wrapLineWithRightAlign($subject, $word)
     {
+        $lineOutput = '';
         $len = strlen($word);
 
         if (strlen($subject) < self::CHARS_PER_LINE - $len + 1) {
             return $this->rightAlign($subject, $word);
         }
 
-        $newSubject = substr_replace($subject, "\n", self::CHARS_PER_LINE - $len, 0);
-        return $this->wrapLine($newSubject);
+        $lines = explode("\n", $this->wrapLine($subject));
+        $firstLine = array_shift($lines);
+
+        // Add the stats to the first line.
+        $lineOutput .= $this->rightAlign($firstLine, $word) . "\n    ";
+
+        // And add the remaining lines to the resulting string.
+        $lineOutput .= $this->wrapLine(implode(" ", array_map("trim", $lines)));
+
+        return $lineOutput;
     }
 
     /**
