@@ -43,7 +43,7 @@ class Application extends ConsoleApplication
     }
 
     /**
-     * Gets the default commands that shoudl be available.
+     * Gets the default commands that should be available.
      * @return array|\Symfony\Component\Console\Command\Command[]
      */
     protected function getDefaultCommands()
@@ -79,6 +79,19 @@ class Application extends ConsoleApplication
                 $this->getVersion()
             )
         );
+
+        $this->parentDoRun($input, $output);
+    }
+
+    /**
+     * Calls the parent method.
+     * @param InputInterface  $input  The input to the command.
+     * @param OutputInterface $output The output to the command.
+     * @return void
+     * @codeCoverageIgnore
+     */
+    protected function parentDoRun(InputInterface $input, OutputInterface $output)
+    {
         parent::doRun($input, $output);
     }
 }
