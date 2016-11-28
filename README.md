@@ -30,5 +30,5 @@ or manually add it to the require-dev section of your composer file.
 
 ## Usage
 ```
-> gitbcc --type=clover --vcs=git reports/clover.xml
+> gitbcc --output-format=author reports/clover.xml
 ```
