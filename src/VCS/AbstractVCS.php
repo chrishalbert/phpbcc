@@ -28,7 +28,7 @@ abstract class AbstractVCS implements VCSInterface
      * VCSInterface constructor.
      * @param array $entries The uncovered object entries provided by the input.
      */
-    final public function __construct(array $entries = [])
+    public function __construct(array $entries = [])
     {
         $this->setEntries($entries);
     }
