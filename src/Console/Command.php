@@ -32,7 +32,7 @@ class Command extends SymfonyCommand
             'input-format', null, InputOption::VALUE_OPTIONAL, 'The code coverage report format.', 'clover'
         ],
         [
-            'output-format', null, InputOption::VALUE_OPTIONAL, 'The report format.', 'text'
+            'output-format', null, InputOption::VALUE_OPTIONAL, 'The report format.', 'author'
         ]
     ];
 
@@ -122,6 +122,7 @@ class Command extends SymfonyCommand
      * Loads the output format.
      * @param InputInterface $input The input to the command.
      * @return AuthorOutput|TextOutput
+     * @throws InvalidArgumentException If an invalid output-format type was requested.
      */
     protected function loadOutputFormat(InputInterface $input)
     {
@@ -129,9 +130,10 @@ class Command extends SymfonyCommand
             case 'text':
                 return new TextOutput();
             case 'author':
-                return new AuthorOutput()   ;
+                return new AuthorOutput();
             default:
                 break;
         }
+        throw new InvalidArgumentException('A valid `output-format` argument was not passed.');
     }
 }
