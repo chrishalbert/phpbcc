@@ -2,9 +2,15 @@
 <?php
 
 $rootDir = dirname(__FILE__);
-$autoloader = $rootDir . "/vendor/autoload.php";
+$autoloader = $rootDir . "/../../autoload.php";
 
-if (!file_exists($autoloader)) {
+if (file_exists($rootDir . "/../../autoload.php")) {
+    $autoloader = $rootDir . "/../../autoload.php";
+} elseif (file_exists($rootDir . "/vendor/autoload.php")) {
+    $autoloader = $rootDir . "/vendor/autoload.php";
+}
+
+if (!$autoloader) {
     throw new Exception('You need to run composer to create the autoloader.');
 }
 
