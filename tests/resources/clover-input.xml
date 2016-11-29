@@ -3,14 +3,14 @@
     <project timestamp="1479006233">
         <package name="package">
             <file name="/home/user/package/subpackage/Foo.php">
-                <line num="1" type="stmt" count="1"/>
+                <line num="1" type="stmt" count="0"/>
                 <line num="2" type="stmt" count="0"/>
                 <line num="3" type="stmt" count="0"/>
             </file>
             <file name="/home/user/package/subpackage/Bar.php">
                 <line num="4" type="stmt" count="0"/>
                 <line num="5" type="stmt" count="0"/>
-                <line num="6" type="stmt" count="0"/>
+                <line num="6" type="stmt" count="1"/>
             </file>
         </package>
     </project>

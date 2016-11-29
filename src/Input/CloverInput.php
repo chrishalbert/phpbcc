@@ -39,7 +39,7 @@ class CloverInput extends AbstractInput
     private function seekLineStats(\SimpleXMLElement $file)
     {
         foreach ($file->children()->line as $line) {
-            if (!$line['count']) {
+            if ((int)$line['count']) {
                 continue;
             }
             $lineNumber = (int) $line['num']->__toString();

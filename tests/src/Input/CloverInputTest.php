@@ -50,10 +50,7 @@ class CloverInputTest extends \PHPUnit_Framework_TestCase
             ],
             [
                 'file' => '/home/user/package/subpackage/Bar.php', 'line' => 5
-            ],
-            [
-                'file' => '/home/user/package/subpackage/Bar.php', 'line' => 6
-            ],
+            ]
         ];
     }
 }
