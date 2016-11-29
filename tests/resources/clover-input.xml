@@ -3,7 +3,7 @@
     <project timestamp="1479006233">
         <package name="package">
             <file name="/home/user/package/subpackage/Foo.php">
-                <line num="1" type="stmt" count="0"/>
+                <line num="1" type="stmt" count="1"/>
                 <line num="2" type="stmt" count="0"/>
                 <line num="3" type="stmt" count="0"/>
             </file>
