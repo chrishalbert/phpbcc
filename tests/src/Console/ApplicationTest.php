@@ -50,7 +50,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
 
         $outputMock->expects($this->once())
             ->method('write')
-            ->with('phpbcc version 0.0.1 by Chris Halbert' . PHP_EOL . PHP_EOL);
+            ->with('phpbcc version 1.0.0 by Chris Halbert' . PHP_EOL . PHP_EOL);
 
         $inputMock = $this->getMockBuilder(InputInterface::class)
             ->setMethods(get_class_methods(InputInterface::class))
