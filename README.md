@@ -30,7 +30,7 @@ composer require phpbcc/phpbcc
 or manually add it to the require-dev section of your composer file.
 
 {
-    "require-dev": {
+    "require-dev"   : {
         "phpbcc/phpbcc": "*"
     }
 }
@@ -38,4 +38,16 @@ or manually add it to the require-dev section of your composer file.
 ## Usage
 ```
 > gitbcc --output-format=author reports/clover.xml
+```
+
+## Sample Output
+```
+phpbcc version 1.0.0 by Chris Halbert
+
+PHP BLAME CODE COVERAGE                                                UNCOVERED OBJECTS (#/total) %
+
+Chris Halbert                                                                             (8/8) 100%
+  FileNotFoundException.php:15, 16, 17, 18                                                 (4/8) 50%
+  AbstractInput.php:39, 76, 78                                                           (3/8) 37.5%
+  AuthorOutput.php:157                                                                   (1/8) 12.5%
 ```

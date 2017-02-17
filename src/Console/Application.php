@@ -22,7 +22,7 @@ class Application extends ConsoleApplication
      * Version of the application.
      * @const string
      */
-    const VERSION = '0.0.1';
+    const VERSION = '1.0.0';
 
     /**
      * Get the name of the command.
