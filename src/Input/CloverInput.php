@@ -42,6 +42,7 @@ class CloverInput extends AbstractInput
             if ((int)$line['count']) {
                 continue;
             }
+
             $lineNumber = (int) $line['num']->__toString();
             $this->addEntry($file['name']->__toString(), $lineNumber);
         }

@@ -45,7 +45,7 @@ class GitVCS extends AbstractVCS
      * @param integer $line The line number in the file.
      * @return array ['author', 'date']
      */
-    public function getAuthorAndDate($file, $line)
+    public function getAuthorAndDate(string $file, int $line)
     {
         $author = '';
         $date = '';
@@ -55,6 +55,7 @@ class GitVCS extends AbstractVCS
             if (strpos($shard, self::AUTHOR) === 0) {
                 $author = $this->stripEntity(self::AUTHOR, $shard);
             }
+
             if (strpos($shard, self::DATE) === 0) {
                 $date = date("Y-m-d", $this->stripEntity(self::DATE, $shard));
             }
@@ -69,7 +70,7 @@ class GitVCS extends AbstractVCS
      * @param string $string The string is what the key is removed from.
      * @return string
      */
-    private function stripEntity($key, $string)
+    private function stripEntity(string $key, string $string)
     {
         return trim(str_replace($key, '', $string));
     }

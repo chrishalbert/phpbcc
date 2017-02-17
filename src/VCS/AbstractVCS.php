@@ -22,7 +22,7 @@ abstract class AbstractVCS implements VCSInterface
      * @param integer $line The line number in the file.
      * @return array ['author', 'date']
      */
-    abstract public function getAuthorAndDate($file, $line);
+    abstract public function getAuthorAndDate(string $file, int $line);
 
     /**
      * VCSInterface constructor.
@@ -53,7 +53,6 @@ abstract class AbstractVCS implements VCSInterface
     {
         return $this->entries;
     }
-
 
     /**
      * Validates the entry format.

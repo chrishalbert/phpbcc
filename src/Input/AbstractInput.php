@@ -33,7 +33,7 @@ abstract class AbstractInput implements InputInterface
      * @param string $path Path to the input.
      * @throws FileNotFoundException If file path does not exist.
      */
-    final public function __construct($path)
+    final public function __construct(string $path)
     {
         if (!file_exists($path)) {
             throw new FileNotFoundException("File `$path` not found.");
@@ -84,7 +84,7 @@ abstract class AbstractInput implements InputInterface
      * @param integer $lineNumber The line number of an uncovered object.
      * @return void
      */
-    final public function addEntry($fileName, $lineNumber)
+    final public function addEntry(string $fileName, int $lineNumber)
     {
         $this->entries[] = ['file' => $fileName, 'line' => $lineNumber];
     }
