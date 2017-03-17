@@ -37,7 +37,7 @@ or manually add it to the require-dev section of your composer file.
 
 ## Usage
 ```
-> gitbcc --output-format=author reports/clover.xml
+> phpbcc --output-format=author reports/clover.xml
 ```
 
 ## Sample Output
