@@ -16,7 +16,7 @@ someone to someone in part for visibility and also to make sure it gets done. Th
 * **Boy Scout Rule** - Authors are encouraged and have full sight of code that can be cleaned up. Leave the code
 cleaner than you found it.
 
-## What is this *NOT*?
+## What this is *NOT*?
 * **Performance Metric Indicator** - This assigns developers to be accountable for their's and others' code but cannot be
 used to show their performance. Typically, performance metrics assess both positive and negative attributes; this
 only reports on code that needs to be covered. Use the codebase's code coverage improvement to report on the 
@@ -77,8 +77,10 @@ Chris Halbert                                                                   
    1. If it works, keep, if not, trash. Regardless, let me know what you think.
 
 ## Feature Requests/Bugs
-   Submit feature requests or bugs at [PhpBCC Issues](https://github.com/chrishalbert/phpbcc/issues). 
-   Here are some ideas on new features: SVN/CVS/Mercurial support, a report other than Clover, different output
+   Submit feature requests or bugs at [PhpBCC Issues](https://github.com/chrishalbert/phpbcc/issues).
+    
+    
+   Some ideas on new features: SVN/CVS/Mercurial support, a report other than Clover, different output
    type.
    
 ## Contributing
