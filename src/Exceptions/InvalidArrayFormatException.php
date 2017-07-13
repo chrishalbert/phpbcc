@@ -12,7 +12,7 @@ class InvalidArrayFormatException extends \Exception implements ExceptionInterfa
      * FileNotFoundException constructor.
      * @param string $message Command failed message.
      */
-    public function __construct($message = 'Invalid array format.')
+    public function __construct(string $message = 'Invalid array format.')
     {
         return parent::__construct($message, 400);
     }

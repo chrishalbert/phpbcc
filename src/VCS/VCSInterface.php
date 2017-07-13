@@ -33,5 +33,5 @@ interface VCSInterface
      * @param integer $line The line number in the file.
      * @return array ['author', 'date']
      */
-    public function getAuthorAndDate($file, $line);
+    public function getAuthorAndDate(string $file, int $line);
 }

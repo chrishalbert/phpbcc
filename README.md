@@ -1,4 +1,8 @@
 # Php Blame Code Coverage (PhpBCC)
+[![Build Status](https://travis-ci.org/chrishalbert/phpbcc.svg?branch=master)](https://travis-ci.org/chrishalbert/phpbcc)
+[![Coverage Status](https://coveralls.io/repos/github/chrishalbert/phpbcc/badge.svg?branch=master)](https://coveralls.io/github/chrishalbert/phpbcc?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/phpbcc/phpbcc/version)](https://packagist.org/packages/phpbcc/phpbcc)
+[![License](https://poser.pugx.org/phpbcc/phpbcc/license)](https://packagist.org/packages/phpbcc/phpbcc)
 
 A tool that consumes a code coverage report and uses the version control history to report metrics on uncovered code by author.
 
@@ -22,26 +26,66 @@ team's quality rather than the individual.
     1. Merge conflict resolutions
     1. Git history is editable
     1. There's likely more..
-* **Blame Bus** - Keep that blameless mentality, just assign tasks so they gone at some point and help your team want
+* **Blame Bus** - Keep that blameless mentality, just assign tasks so they get done at some point and help your team want
 to grow.
 
 ## Installation - 
 
+Global installation:
+```bash
 composer global require phpbcc/phpbcc
+```
 
 Local/project installation:
 
+```
 composer require-dev phpbcc/phpbcc
+```
 
 or manually add it to the require-dev section of your composer file.
 
+```json
 {
-    "require-dev": {
+    "require-dev"   : {
         "phpbcc/phpbcc": "*"
     }
 }
+```
 
 ## Usage
 ```
-> gitbcc --output-format=author reports/clover.xml
+> phpbcc --output-format=author reports/clover.xml
 ```
+
+## Sample Output
+```
+phpbcc version 1.0.0 by Chris Halbert
+
+PHP BLAME CODE COVERAGE                                                UNCOVERED OBJECTS (#/total) %
+
+Chris Halbert                                                                             (8/8) 100%
+  FileNotFoundException.php:15, 16, 17, 18                                                 (4/8) 50%
+  AbstractInput.php:39, 76, 78                                                           (3/8) 37.5%
+  AuthorOutput.php:157                                                                   (1/8) 12.5%
+```
+
+## Rollout
+   1. Ask your manager/lead if it can be tested.
+   1. Check your code coverage.
+   1. Add it to your build process.
+   1. Check code coverage after your 'testing period.'
+   1. If it works, keep, if not, trash. Regardless, let me know what you think.
+
+## Feature Requests/Bugs
+   Submit feature requests or bugs at [PhpBCC Issues](https://github.com/chrishalbert/phpbcc/issues). 
+   Here are some ideas on new features: SVN/CVS/Mercurial support, a report other than Clover, different output
+   type.
+   
+## Contributing
+   1. Build off of the interfaces established
+   1. Ensure code coverage!
+   1. Make sure the build passes
+   1. Submit to [PhpBCC Pull Requests](https://github.com/chrishalbert/phpbcc/pulls)
+   
+## Feedback
+   Let me know the successes or hardships you may experience.

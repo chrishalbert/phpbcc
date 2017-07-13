@@ -36,7 +36,6 @@ class Command extends SymfonyCommand
         ]
     ];
 
-
     /**
      * Configures the console command.
      * @return void
@@ -98,6 +97,7 @@ class Command extends SymfonyCommand
             default:
                 break;
         }
+
         throw new InvalidArgumentException('A valid `input-format` argument was not passed.');
     }
 
@@ -115,6 +115,7 @@ class Command extends SymfonyCommand
             default:
                 break;
         }
+
         throw new InvalidArgumentException('A valid `vcs` argument was not passed.');
     }
 
@@ -134,6 +135,7 @@ class Command extends SymfonyCommand
             default:
                 break;
         }
+
         throw new InvalidArgumentException('A valid `output-format` argument was not passed.');
     }
 }

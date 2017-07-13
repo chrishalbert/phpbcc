@@ -93,7 +93,7 @@ class AuthorOutput implements OutputInterface
      * @param string $author The author.
      * @return void
      */
-    protected function addAuthorEntry($author)
+    protected function addAuthorEntry(string $author)
     {
         $this->linesByAuthor[$author]++;
         $this->totalLines++;
@@ -123,7 +123,7 @@ class AuthorOutput implements OutputInterface
      * @param string $author The author.
      * @return string
      */
-    protected function getAuthorHeader($author)
+    protected function getAuthorHeader(string $author)
     {
         $stats = $this->getStats($this->linesByAuthor[$author], $this->totalLines);
         return $this->rightAlign($author, $stats) . PHP_EOL;
@@ -135,7 +135,7 @@ class AuthorOutput implements OutputInterface
      * @param integer $total The total.
      * @return string
      */
-    protected function getStats($count, $total)
+    protected function getStats(int $count, int $total)
     {
         $percent = strval(round($count / $total * 100, 1)) . '%';
         $ration = '(' . $count . '/' . $total . ')';
@@ -148,7 +148,7 @@ class AuthorOutput implements OutputInterface
      * @param string $word    The word to append.
      * @return string
      */
-    protected function wrapLineWithRightAlign($subject, $word)
+    protected function wrapLineWithRightAlign(string $subject, string $word)
     {
         $lineOutput = '';
         $len = strlen($word);
@@ -174,7 +174,7 @@ class AuthorOutput implements OutputInterface
      * @param string $line A string.
      * @return string
      */
-    protected function wrapLine($line)
+    protected function wrapLine(string $line)
     {
         return wordwrap($line, self::CHARS_PER_LINE - self::RIGHT_PADDING, "\n    ");
     }
@@ -185,7 +185,7 @@ class AuthorOutput implements OutputInterface
      * @param string $word The word to be added.
      * @return string
      */
-    protected function rightAlign($line, $word)
+    protected function rightAlign(string $line, string $word)
     {
         $len = strlen($word);
         return str_pad($line, self::CHARS_PER_LINE - $len) . $word;
